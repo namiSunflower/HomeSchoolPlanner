@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChildrenList">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:shadowColor="#287A7B"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:text="Children"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#34A0A4"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="543dp" />
+
+    <Button
+        android:id="@+id/saveChildren"
+        android:layout_width="225dp"
+        android:layout_height="43dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Save changes"
+        app:backgroundTint="#4CAF50"
+        app:cornerRadius="50sp" />
+
+    <Button
+        android:id="@+id/cancelChildren"
+        android:layout_width="225dp"
+        android:layout_height="43dp"
+        android:layout_gravity="center"
+        android:text="Cancel"
+        app:backgroundTint="#DA1129"
+        app:cornerRadius="50sp" />
+</LinearLayout>
