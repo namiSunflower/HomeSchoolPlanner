@@ -2,22 +2,28 @@ package com.example.homeschoolplanner;
 
 import android.util.Log;
 
-public class DataBase {
+import java.io.Serializable;
+
+public class DataBase implements Serializable {
     static public final String TAG = "DataBase";
 
     String server_url;
-    String password;
+    String server_password;
     int household_id;
     String user_name;
 
-    public static int createHousehold() {
-        Log.d(TAG, "Send Household data to Server.");
-        return 1;
+    public static User retrieveUserData(String user_name, String password) {
+        return new User();
     }
 
-    public static boolean createParent() {
+    public static String createHousehold() {
+        Log.d(TAG, "Send Household data to Server.");
+        return "";
+    }
+
+    public static String createParent() {
         Log.d(TAG, "Sent new parent data to Server.");
-        return false;
+        return "";
     }
 
     public static boolean createChild() {
