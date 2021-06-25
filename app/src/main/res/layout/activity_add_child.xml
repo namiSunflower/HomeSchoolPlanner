@@ -17,7 +17,7 @@
         android:layout_marginRight="39dp"
         android:layout_marginBottom="103dp"
         android:text="Submit"
-        app:backgroundTint="#4CAF50"
+        app:backgroundTint="#47A773"
         app:cornerRadius="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
