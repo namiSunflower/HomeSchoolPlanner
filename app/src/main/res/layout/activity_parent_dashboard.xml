@@ -9,6 +9,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="417dp"
         android:layout_height="562dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="1dp" />
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="166dp" />
+
+    <ImageView
+        android:id="@+id/parentIcon"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/parent"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
