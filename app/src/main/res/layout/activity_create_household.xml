@@ -7,6 +7,23 @@
     tools:context=".CreateHousehold">
 
     <Button
+        android:id="@+id/submitHousehold"
+        android:layout_width="308dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="296dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:text="Submit"
+        app:backgroundTint="#4CAF50"
+        app:cornerRadius="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.294"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameSignupText6" />
+
+    <Button
         android:id="@+id/viewSubjects2"
         android:layout_width="308dp"
         android:layout_height="48dp"
