@@ -5,7 +5,7 @@
     android:layout_width="350dp"
     android:layout_height="450dp"
     android:layout_gravity="center"
-    android:background="#ffffff"
+    android:background="#C4B2BC"
     android:padding="5dp"
     tools:context=".AddChildPopup">
 
@@ -19,7 +19,7 @@
         android:layout_marginRight="48dp"
         android:layout_marginBottom="58dp"
         android:text="Delete"
-        app:backgroundTint="#DA1129"
+        app:backgroundTint="#DA3A45"
         app:cornerRadius="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
         android:layout_marginRight="48dp"
         android:layout_marginBottom="7dp"
         android:text="Add"
-        app:backgroundTint="#4CAF50"
+        app:backgroundTint="#47A773"
         app:cornerRadius="50sp"
         app:layout_constraintBottom_toTopOf="@+id/deleteSubject"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,12 +68,12 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="14dp"
         android:layout_marginRight="14dp"
-        android:shadowColor="#287A7B"
+        android:shadowColor="#665808"
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"
         android:text="Name of subject:"
-        android:textColor="#34A0A4"
+        android:textColor="#FFDE15"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/usernameSignup"
@@ -95,5 +95,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_close_24"
         tools:visibility="visible" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

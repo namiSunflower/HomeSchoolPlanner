@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D8D4F2"
     tools:context=".ParentDashboard">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="417dp"
         android:layout_height="562dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,4 +28,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/parent" />
+
+    <ImageView
+        android:id="@+id/bottom_eliptical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/bottom_eliptical" />
 </androidx.constraintlayout.widget.ConstraintLayout>

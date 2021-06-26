@@ -150,4 +150,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/student" />
 
+    <ImageView
+        android:id="@+id/bottom_eliptical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/bottom_eliptical" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -71,19 +71,6 @@
         app:layout_constraintTop_toBottomOf="@+id/appName"
         app:srcCompat="@drawable/logo" />
 
-    <EditText
-        android:id="@+id/userName"
-        android:layout_width="189dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="JohnSmith1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appName" />
-
     <TextView
         android:id="@+id/usernameText"
         android:layout_width="wrap_content"
@@ -102,8 +89,21 @@
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/userName"
         app:layout_constraintEnd_toStartOf="@+id/userName"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="189dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="JohnSmith1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appName" />
 
     <TextView
         android:id="@+id/passwordText"
@@ -144,11 +144,8 @@
         android:id="@+id/bottom_eliptical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/bottom_eliptical" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

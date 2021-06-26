@@ -6,20 +6,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
+    android:background="#D8D4F2"
     tools:context=".SubjectsList">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:shadowColor="#287A7B"
+        android:gravity="center"
+        android:padding="16dp"
+        android:shadowColor="#57171B"
         android:shadowDx="1"
         android:shadowDy="1"
-        android:padding="16dp"
-        android:gravity="center"
         android:text="Subjects"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#34A0A4"
+        android:textColor="#DA3A45 "
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -34,7 +35,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:text="Save changes"
-        app:backgroundTint="#4CAF50"
+        app:backgroundTint="#47A773"
         app:cornerRadius="50sp" />
 
     <Button
@@ -44,7 +45,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:text="Cancel"
-        app:backgroundTint="#DA1129"
+        app:backgroundTint="#5B6FB4"
         app:cornerRadius="50sp" />
 
 </LinearLayout>
