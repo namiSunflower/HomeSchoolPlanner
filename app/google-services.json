@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "11267208925",
+    "firebase_url": "https://homeschoolplanner-15f3e-default-rtdb.firebaseio.com",
+    "project_id": "homeschoolplanner-15f3e",
+    "storage_bucket": "homeschoolplanner-15f3e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11267208925:android:8f435a01418e2f89348d34",
+        "android_client_info": {
+          "package_name": "com.example.homeschoolplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11267208925-9pd8qol2sh1qkfs5tk3pd0llpj1pnh1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMYNqjELxkUV8R6SVgz0UxuIQ4PJc5VEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11267208925-9pd8qol2sh1qkfs5tk3pd0llpj1pnh1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
