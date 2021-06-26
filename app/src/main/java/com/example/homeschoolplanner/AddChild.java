@@ -19,7 +19,7 @@ ImageView exit;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_child);
     }
-    public void popupSubject(View view){
+    public void popupSubject(View v){
         final Dialog dialog=new Dialog(this);
         dialog.setContentView(R.layout.activity_add_child_popup);
         exit=(ImageView) dialog.findViewById(R.id.exit);
@@ -32,11 +32,11 @@ ImageView exit;
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
-    public void viewSubjects(View view){
+    public void viewSubjects(View v){
         Intent intent = new Intent(this, SubjectsList.class);
         startActivity(intent);
     }
-    public void parentDashboardScreen(View view){
+    public void parentDashboardScreen(View v){
         Intent intent = new Intent(this, ParentDashboard.class);
         startActivity(intent);
     }
