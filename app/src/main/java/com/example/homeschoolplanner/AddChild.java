@@ -3,6 +3,7 @@ package com.example.homeschoolplanner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -30,5 +31,13 @@ ImageView exit;
         });
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
+    }
+    public void viewSubjects(View view){
+        Intent intent = new Intent(this, SubjectsList.class);
+        startActivity(intent);
+    }
+    public void parentDashboardScreen(View view){
+        Intent intent = new Intent(this, ParentDashboard.class);
+        startActivity(intent);
     }
 }
