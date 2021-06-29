@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // redirect to user profile
                     startActivity(new Intent(MainActivity.this, ParentDashboard.class));
                 }else{
-                    Toast.makeText(MainActivity.this, "Failed to login! Please check your crendentials", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Failed to login! Please check your credentials", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -112,14 +112,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String user_name = et_user_name.getText().toString();
         Log.d(TAG, "Username is: " + user_name);
         Log.d(TAG, "Password is: " + password);
-
-
         DataBase db = new DataBase();
         User user = db.retrieveUserData(user_name, password);
-
         //Intent intent =  new Intent(this, ParentDashboard.class);
         Intent intent = user.is_parent ? new Intent(this, ParentDashboard.class) : new Intent(this, ChildrenList.class);
         intent.putExtra("User", user);
         startActivity(intent);
     }*/
-    }
+}

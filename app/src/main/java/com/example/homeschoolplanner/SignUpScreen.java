@@ -21,7 +21,6 @@ public class SignUpScreen extends AppCompatActivity implements View.OnClickListe
     public final static String TAG = "Signup Screen";
     private  Button submitSignup;
     private EditText editTextFullname, editTextPassword;
-
     private FirebaseAuth mAuth;
 
     @Override
