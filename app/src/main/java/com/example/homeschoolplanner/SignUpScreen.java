@@ -20,7 +20,7 @@ import com.google.firebase.database.annotations.NotNull;
 public class SignUpScreen extends AppCompatActivity implements View.OnClickListener {
     public final static String TAG = "Signup Screen";
     private  Button submitSignup;
-    private EditText editTextFullname, editTextPassword;
+    private EditText editTextEmail, editTextPassword;
     private FirebaseAuth mAuth;
 
     @Override
@@ -34,7 +34,7 @@ public class SignUpScreen extends AppCompatActivity implements View.OnClickListe
         submitSignup = (Button)findViewById(R.id.submitSignup);
         submitSignup.setOnClickListener(this);
 
-        editTextFullname = (EditText) findViewById(R.id.usernameSignup);
+        editTextEmail = (EditText) findViewById(R.id.emailSignup);
         editTextPassword = (EditText) findViewById(R.id.passWordSignup);
 
     }
@@ -49,17 +49,17 @@ public class SignUpScreen extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setUpAccount() {
-        String username = editTextFullname.getText().toString().trim();
+        String username = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
         if(username.isEmpty()){
-            editTextFullname.setError("Username is required!");
-            editTextFullname.requestFocus();
+            editTextEmail.setError("Username is required!");
+            editTextEmail.requestFocus();
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(username).matches()){
-            editTextFullname.setError("Username must be a Valid email!");
-            editTextFullname.requestFocus();
+            editTextEmail.setError("Username must be a Valid email!");
+            editTextEmail.requestFocus();
             return;
         }
         if(password.isEmpty()){
@@ -77,7 +77,7 @@ public class SignUpScreen extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User2 user = new User2(username,password);
+                            User user = new User(null, true, password, username, null);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -97,31 +97,6 @@ public class SignUpScreen extends AppCompatActivity implements View.OnClickListe
                 });
 
 
-       /* //Get User data
-        boolean is_parent = true;
-        EditText et_password = (EditText) findViewById(R.id.passWordSignup);
-        EditText et_user_name = (EditText) findViewById(R.id.usernameSignup);
-        String password = et_password.getText().toString();
-        String user_name = et_user_name.getText().toString();
-        Log.d(TAG, "Password is: " + password);
-        Log.d(TAG, "Username is: " + user_name);
-
-        //Get household data
-        String household_name = null;
-        ArrayList<String> class_list = null;
-
-
-        DataBase db = new DataBase();
-        String parent_id = db.createParent();
-        String household_id = db.createHousehold();
-
-        Household household = new Household(household_name, household_id, class_list);
-
-        User new_user = new User(parent_id, is_parent, password, user_name, household_id,household, db);
-
-        Intent intent = new Intent(this, ParentDashboard.class);
-        intent.putExtra("User", new_user);
-        startActivity(intent);*/
 
     }
 

@@ -60,14 +60,14 @@
         app:layout_constraintTop_toBottomOf="@+id/usernameSignupText" />
 
     <EditText
-        android:id="@+id/usernameSignup"
+        android:id="@+id/emailSignup"
         android:layout_width="189dp"
         android:layout_height="42dp"
         android:layout_marginEnd="66dp"
         android:layout_marginRight="66dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="JohnSmith1"
+        android:hint="JohnSmith@gmail.com"
         app:layout_constraintBaseline_toBaselineOf="@+id/usernameSignupText"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -84,11 +84,11 @@
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"
-        android:text="Username:"
+        android:text="Email:"
         android:textColor="#34A0A4"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/usernameSignup"
+        app:layout_constraintEnd_toStartOf="@+id/emailSignup"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

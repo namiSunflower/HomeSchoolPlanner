@@ -76,7 +76,7 @@
         android:textColor="#FFDE15"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/usernameSignup"
+        app:layout_constraintEnd_toStartOf="@+id/emailSignup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
