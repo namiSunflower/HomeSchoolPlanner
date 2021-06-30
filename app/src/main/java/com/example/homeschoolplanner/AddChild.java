@@ -8,12 +8,14 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class AddChild extends AppCompatActivity {
-Dialog dialog;
-ImageView exit;
+    Dialog dialog;
+    ImageView exit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +38,7 @@ ImageView exit;
         Intent intent = new Intent(this, SubjectsList.class);
         startActivity(intent);
     }
-    public void parentDashboardScreen(View v){
+    public void newChild(View v){
         Intent intent = new Intent(this, ParentDashboard.class);
         startActivity(intent);
     }
