@@ -3,11 +3,11 @@ package com.example.homeschoolplanner;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    String user_id;
-    String email;
-    boolean is_parent;
-    String password;
-    String user_name;
+    public String user_id;
+    public String email;
+    public boolean is_parent;
+    public String password;
+    public String user_name;
 
 
     User() {
@@ -17,7 +17,6 @@ public class User implements Serializable {
         this.user_name = null;
     }
 
-
     User(String user_id, boolean is_parent, String password, String user_name, String email) {
         this.user_id = user_id;
         this.is_parent = is_parent;
@@ -25,7 +24,7 @@ public class User implements Serializable {
         this.user_name = user_name;
         this.email = email;
     }
-
+/**
     String getUserId() {
         return user_id;
     }
@@ -48,5 +47,5 @@ public class User implements Serializable {
         return user_name;
     }
 
-
+*/
 }

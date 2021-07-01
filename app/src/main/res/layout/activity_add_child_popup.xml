@@ -66,8 +66,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
+        android:layout_marginEnd="191dp"
+        android:layout_marginRight="191dp"
         android:shadowColor="#665808"
         android:shadowDx="1"
         android:shadowDy="1"
@@ -76,7 +76,7 @@
         android:textColor="#FFDE15"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/emailSignup"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
