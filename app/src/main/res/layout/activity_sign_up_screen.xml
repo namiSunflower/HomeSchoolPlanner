@@ -8,7 +8,7 @@
     tools:context=".SignUpScreen">
 
     <Button
-        android:id="@+id/submitSignup"
+        android:id="@+id/showUser"
         android:layout_width="183dp"
         android:layout_height="53dp"
         android:layout_marginStart="155dp"
