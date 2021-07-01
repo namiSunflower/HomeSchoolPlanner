@@ -24,7 +24,7 @@ public class User implements Serializable {
         this.user_name = user_name;
         this.email = email;
     }
-/**
+
     String getUserId() {
         return user_id;
     }
@@ -47,5 +47,5 @@ public class User implements Serializable {
         return user_name;
     }
 
-*/
+
 }
