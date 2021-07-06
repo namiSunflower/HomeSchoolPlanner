@@ -16,7 +16,7 @@
         android:layout_marginEnd="155dp"
         android:layout_marginRight="155dp"
         android:layout_marginBottom="168dp"
-        android:onClick="onClick"
+        android:onClick="signUp"
         android:text="Submit"
         android:textColor="#ffffff"
         app:backgroundTint="#34A0A4"
@@ -66,8 +66,8 @@
         android:layout_marginEnd="66dp"
         android:layout_marginRight="66dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="JohnSmith@gmail.com"
+        android:inputType="textEmailAddress"
+        android:hint="johnsmith@email.com"
         app:layout_constraintBaseline_toBaselineOf="@+id/usernameSignupText"
         app:layout_constraintEnd_toEndOf="parent" />
 

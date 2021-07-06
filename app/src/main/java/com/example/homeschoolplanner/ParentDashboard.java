@@ -14,7 +14,7 @@ public class ParentDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_parent_dashboard);
     }
     public void addChildScreen(View view){
-        Intent intent = new Intent(this, AddChild.class);
+        Intent intent = new Intent(ParentDashboard.this, AddChild.class);
         startActivity(intent);
     }
 }

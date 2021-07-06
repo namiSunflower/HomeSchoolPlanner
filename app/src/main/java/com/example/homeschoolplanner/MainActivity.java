@@ -5,99 +5,83 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity {
     public static final String TAG = "Sign In Screen";
     private EditText editTextEmail, editTextPassword;
-    private Button signIn;
-
-    private TextView singUp;
-
-    private FirebaseAuth mAuth;
+    private String email, password,userId;
+    private Boolean userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        singUp = findViewById(R.id.signUp);
-        singUp.setOnClickListener(this);
-
-        signIn = findViewById(R.id.logIn);
-        signIn.setOnClickListener(this);
-
         editTextEmail = (EditText) findViewById(R.id.userName);
         editTextPassword = (EditText) findViewById(R.id.passWord);
-
-        mAuth = FirebaseAuth.getInstance();
-
     }
-
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.signUp:
-                startActivity(new Intent(this, SignUpScreen.class));
-                break;
-            case R.id.logIn:
-                userLogin();
-                break;
-
+    public void logIn(View view){
+        email = editTextEmail.getText().toString();
+        password= editTextPassword.getText().toString();
+        if (email.isEmpty()){
+            editTextEmail.setError("Email is required!");
+            editTextEmail.requestFocus();
+            return;
         }
-    }
-
-    private void userLogin() {
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
-
-        if(password.isEmpty()){
+        if(password.isEmpty()) {
             editTextPassword.setError("Password is required!");
             editTextPassword.requestFocus();
             return;
         }
-        if(password.length()<6) {
-            editTextPassword.setError("Min Password Length is should be 6 Characters!");
-            editTextPassword.requestFocus();
-            return;
-        }
-
-        if(email.isEmpty()){
-            editTextEmail.setError("Full name is required!");
-            editTextEmail.requestFocus();
-            return;
-        }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            editTextEmail.setError("Please Provide Valid email!");
-            editTextEmail.requestFocus();
-            return;
-        }
-
-
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        FirebaseAuth authenticateLogin = FirebaseAuth.getInstance();
+        authenticateLogin.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    // redirect to user profile
-                    startActivity(new Intent(MainActivity.this, ParentDashboard.class));
-                }else{
-                    Toast.makeText(MainActivity.this, "Failed to login! Please check your credentials", Toast.LENGTH_LONG).show();
+                    userId= task.getResult().getUser().getUid();
+                    FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
+                    firebaseDatabase.getReference().child("Users").child(userId).child("is_parent").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            userType = snapshot.getValue(Boolean.class);
+                            //if usertype is parent, take user to parent dashboard
+                            if(userType==true){
+                                Intent parentDashboard = new Intent(MainActivity.this, ParentDashboard.class);
+                                startActivity(parentDashboard);
+                            }
+
+                            if(userType==false){
+                                Intent childDashboard = new Intent(MainActivity.this, ChildDashboard.class);
+                                startActivity(childDashboard);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),task.getException().getLocalizedMessage(),Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-
-
+    public void signUp(View view){
+        Intent signUpScreen = new Intent(MainActivity.this, SignUpScreen.class);
+        startActivity(signUpScreen);
+    }
 }
+
