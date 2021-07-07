@@ -1,13 +1,15 @@
 package com.example.homeschoolplanner;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class User implements Serializable {
     public String user_id;
-    //public String email;
+    public String email;
     public boolean is_parent;
     public String password;
     public String user_name;
+    public List<String> children;
 
 
     User() {
@@ -17,12 +19,12 @@ public class User implements Serializable {
         this.user_name = null;
     }
 
-    User(String user_id, boolean is_parent, String password, String user_name) {
+    User(String user_id, boolean is_parent, String password, String email, String user_name) {
         this.user_id = user_id;
         this.is_parent = is_parent;
         this.password = password;
         this.user_name = user_name;
-        //this.email = email;
+        this.email = email;
     }
 
     String getUserId() {
@@ -45,6 +47,14 @@ public class User implements Serializable {
 
     String getUserName() {
         return user_name;
+    }
+
+    public List<String> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<String> children) {
+        this.children = children;
     }
 
 
