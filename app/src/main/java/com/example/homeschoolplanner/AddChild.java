@@ -31,7 +31,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class AddChild extends AppCompatActivity {
-    private EditText editTextEmail, editTextPassword, editTextUserName;
+    private EditText editTextEmail, editTextPassword, editTextName;
     private String email, password, userId, parentUserId, userName;
     private FirebaseDatabase firebaseDatabase;
     private ImageView exit;
@@ -43,8 +43,7 @@ public class AddChild extends AppCompatActivity {
         exit = (ImageView) findViewById(R.id.exit);
         editTextEmail = (EditText) findViewById(R.id.childUsername);
         editTextPassword = (EditText) findViewById(R.id.childPassword);
-        //FRANCIS CAN YOU ADD THIS TO THE SCREEN?
-        editTextUserName = null; //(EditText)findViewById(R.id.UserNameSignup)
+        editTextName = (EditText)findViewById(R.id.childName);
         firebaseDatabase = FirebaseDatabase.getInstance();
         Intent intent = getIntent();
         parentUserId = intent.getStringExtra("userId");
@@ -54,8 +53,13 @@ public class AddChild extends AppCompatActivity {
     public void newChild(View view) {
         email = editTextEmail.getText().toString();
         password = editTextPassword.getText().toString();
-        //FRANCIS, PLEASE UNCOMMENT THIS LINE OF CODE AFTER YOU ADD USERNAME
-        //userName = editTextUserName.getText().toString();
+        userName = editTextName.getText().toString();
+
+        if (userName.isEmpty()){
+            editTextName.setError("Name is required!");
+            editTextName.requestFocus();
+            return;
+        }
         if (email.isEmpty()) {
             editTextEmail.setError("Email is required!");
             editTextEmail.requestFocus();

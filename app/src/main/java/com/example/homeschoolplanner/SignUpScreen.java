@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
 
 public class SignUpScreen extends AppCompatActivity {
-    private EditText editTextEmail, editTextPassword, editTextUserName;
+    private EditText editTextEmail, editTextPassword, editTextName;
     private String email, password, userId, userName;
     private FirebaseDatabase firebaseDatabase;
     @Override
@@ -27,16 +27,20 @@ public class SignUpScreen extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_screen);
         editTextEmail = (EditText)findViewById(R.id.emailSignup);
         editTextPassword = (EditText)findViewById(R.id.passWordSignup);
-        //FRANCIS CAN YOU ADD THIS TO THE SCREEN?
-        editTextUserName = null; //(EditText)findViewById(R.id.UserNameSignup)
+        editTextName = (EditText)findViewById(R.id.parentName);
         firebaseDatabase = FirebaseDatabase.getInstance();
 
     }
     public void signUp(View view){
         email = editTextEmail.getText().toString();
         password= editTextPassword.getText().toString();
-        //FRANCIS, PLEASE UNCOMMENT THIS LINE OF CODE AFTER YOU ADD USERNAME
-        //userName = editTextUserName.getText().toString();
+        userName = editTextName.getText().toString();
+
+        if (userName.isEmpty()){
+            editTextName.setError("Name is required!");
+            editTextName.requestFocus();
+            return;
+        }
         if (email.isEmpty()){
             editTextEmail.setError("Email is required!");
             editTextEmail.requestFocus();
@@ -64,8 +68,7 @@ public class SignUpScreen extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     userId = task.getResult().getUser().getUid();
-                    //FRANCIS, PLEASE CONVERT "userName" to userName AFTER YOU MAKE YOUR CHANGES
-                    User user = new User(userId,true,password,email, "userName");
+                    User user = new User(userId,true,password,email,userName);
 
                     firebaseDatabase.getReference().child(userId).setValue(user);
                     Toast.makeText(SignUpScreen.this, "User successfully created!", Toast.LENGTH_LONG).show();

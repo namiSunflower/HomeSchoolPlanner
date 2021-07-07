@@ -8,7 +8,7 @@ public class User implements Serializable {
     public String email;
     public boolean is_parent;
     public String password;
-    public String user_name;
+    public String name;
     public List<String> children;
 
 
@@ -16,14 +16,14 @@ public class User implements Serializable {
         this.user_id = null;
         this.is_parent = true;
         this.password = null;
-        this.user_name = null;
+        this.name = null;
     }
 
-    User(String user_id, boolean is_parent, String password, String email, String user_name) {
+    User(String user_id, boolean is_parent, String password, String email, String name) {
         this.user_id = user_id;
         this.is_parent = is_parent;
         this.password = password;
-        this.user_name = user_name;
+        this.name = name;
         this.email = email;
     }
 
@@ -46,7 +46,7 @@ public class User implements Serializable {
     }
 
     String getUserName() {
-        return user_name;
+        return name;
     }
 
     public List<String> getChildren() {
