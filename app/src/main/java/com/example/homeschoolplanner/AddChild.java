@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.util.Patterns;
 import android.widget.ImageView;
 import android.view.View;
@@ -31,10 +32,12 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class AddChild extends AppCompatActivity {
+    public static final String TAG = "AddChild Screen";
     private EditText editTextEmail, editTextPassword, editTextName;
     private String email, password, userId, parentUserId, userName;
     private FirebaseDatabase firebaseDatabase;
     private ImageView exit;
+    FirebaseAuth authenticateSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +46,10 @@ public class AddChild extends AppCompatActivity {
         exit = (ImageView) findViewById(R.id.exit);
         editTextEmail = (EditText) findViewById(R.id.childUsername);
         editTextPassword = (EditText) findViewById(R.id.childPassword);
-        editTextName = (EditText)findViewById(R.id.childName);
+        editTextName = (EditText) findViewById(R.id.childName);
         firebaseDatabase = FirebaseDatabase.getInstance();
         Intent intent = getIntent();
-        parentUserId = intent.getStringExtra("userId");
+        parentUserId = (parentUserId != null) ? parentUserId : intent.getStringExtra("userId");
     }
 
     //When user clicks submit
@@ -55,7 +58,8 @@ public class AddChild extends AppCompatActivity {
         password = editTextPassword.getText().toString();
         userName = editTextName.getText().toString();
 
-        if (userName.isEmpty()){
+        authenticateSignup = null;
+        if (userName.isEmpty()) {
             editTextName.setError("Name is required!");
             editTextName.requestFocus();
             return;
@@ -81,7 +85,8 @@ public class AddChild extends AppCompatActivity {
             return;
         }
 
-        FirebaseAuth authenticateSignup = FirebaseAuth.getInstance();
+
+        authenticateSignup = FirebaseAuth.getInstance();
         authenticateSignup.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -93,11 +98,39 @@ public class AddChild extends AppCompatActivity {
                     firebaseDatabase.getReference().child(parentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            //Get the current database version of the children list.
                             ArrayList<String> db_children = (ArrayList<String>) snapshot.child("children").getValue();
                             ArrayList<String> children = (db_children != null) ? db_children : new ArrayList();
+                            //Add the new child id to the DataBase
                             children.add(userId);
                             firebaseDatabase.getReference().child(parentUserId).child("children").setValue(children);
+                            String parentEmail = (String) snapshot.child("email").getValue();
+                            String parentPassword = (String) snapshot.child("password").getValue();
+                            authenticateSignup.signOut();
+
+///*
+                            authenticateSignup.signInWithEmailAndPassword(parentEmail, parentPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        Log.d(TAG, "Parent resigned in");
+
+
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Log.w(TAG, "Parent resign in failed", task.getException());
+                                        Toast.makeText(AddChild.this, "Please sign in again.",
+                                                Toast.LENGTH_SHORT).show();
+                                        Intent main = new Intent(AddChild.this, MainActivity.class);
+                                        main.putExtra("userId", parentUserId);
+                                        startActivity(main);
+
+                                    }
+                                }
+                            });//*/
                         }
+
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
@@ -105,10 +138,11 @@ public class AddChild extends AppCompatActivity {
                         }
                     });
 
+
                     Toast.makeText(AddChild.this, "User successfully created!", Toast.LENGTH_LONG).show();
 
                     Intent parentDashboard = new Intent(AddChild.this, ParentDashboard.class);
-                    parentDashboard.putExtra("userId", userId);
+                    parentDashboard.putExtra("userId", parentUserId);
                     startActivity(parentDashboard);
                 } else {
                     Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
