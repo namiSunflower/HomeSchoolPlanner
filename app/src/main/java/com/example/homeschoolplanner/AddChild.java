@@ -108,7 +108,7 @@ public class AddChild extends AppCompatActivity {
                             String parentPassword = (String) snapshot.child("password").getValue();
                             authenticateSignup.signOut();
 
-///*
+
                             authenticateSignup.signInWithEmailAndPassword(parentEmail, parentPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -128,7 +128,7 @@ public class AddChild extends AppCompatActivity {
 
                                     }
                                 }
-                            });//*/
+                            });
                         }
 
 
