@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             //if usertype is child, take user to child dashboard
                             if(userType==false){
-                                Intent childDashboard = new Intent(MainActivity.this, ChildDashboard.class);
+                                Intent childDashboard = new Intent(MainActivity.this, ChildProfile.class);
                                 childDashboard.putExtra("userId", userId);
                                 startActivity(childDashboard);
                             }
