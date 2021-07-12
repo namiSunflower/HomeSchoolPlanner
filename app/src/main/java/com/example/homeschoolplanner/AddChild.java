@@ -3,13 +3,13 @@ package com.example.homeschoolplanner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.LayoutInflater;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.view.View;
 import android.widget.EditText;
@@ -25,11 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import static java.util.Collections.emptyList;
 
 public class AddChild extends AppCompatActivity {
     public static final String TAG = "AddChild Screen";
@@ -37,7 +32,8 @@ public class AddChild extends AppCompatActivity {
     private String email, password, userId, parentUserId, userName;
     private FirebaseDatabase firebaseDatabase;
     private ImageView exit;
-    FirebaseAuth authenticateSignup;
+    private FirebaseAuth authenticateSignup;
+    private Button addSubject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +42,18 @@ public class AddChild extends AppCompatActivity {
         exit = (ImageView) findViewById(R.id.exit);
         editTextEmail = (EditText) findViewById(R.id.childUsername);
         editTextPassword = (EditText) findViewById(R.id.childPassword);
-        editTextName = (EditText) findViewById(R.id.childName);
+        editTextName = (EditText) findViewById(R.id.childsName);
         firebaseDatabase = FirebaseDatabase.getInstance();
+        addSubject = (Button)findViewById(R.id.addSubject);
         Intent intent = getIntent();
         parentUserId = (parentUserId != null) ? parentUserId : intent.getStringExtra("userId");
+
+        addSubject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
     }
 
     //When user clicks submit
@@ -108,7 +112,6 @@ public class AddChild extends AppCompatActivity {
                             String parentPassword = (String) snapshot.child("password").getValue();
                             authenticateSignup.signOut();
 
-///*
                             authenticateSignup.signInWithEmailAndPassword(parentEmail, parentPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -151,19 +154,25 @@ public class AddChild extends AppCompatActivity {
         });
     }
 
-    //When user clicks add subject button
-    public void popupSubject(View view) {
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.activity_add_child_popup);
-        exit = (ImageView) dialog.findViewById(R.id.exit);
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
+    public void showPopup(){
+     //Calls Android Studio built-in AlertDialog class to create a popup
+     AlertDialog.Builder popup = new AlertDialog.Builder(this);
+     //This will set the view for the popup screen
+     LayoutInflater inflater = this.getLayoutInflater();
+     final View viewLayout = inflater.inflate(R.layout.activity_add_child_popup, null);
+     popup.setView(viewLayout);
+     //Instantiates variables for the popup screen
+     ImageView exit = (ImageView)viewLayout.findViewById(R.id.exit);
+     EditText editTextSubject = (EditText)viewLayout.findViewById(R.id.subject);
+     final AlertDialog alertDialog = popup.create();
+     //Functionality for creating subject list after user clicks
+     exit.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             alertDialog.dismiss();
+         }
+     });
+     alertDialog.show();
     }
 
     //When user clicks view subjects button

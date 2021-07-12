@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeSchoolPlanner">
-        <activity android:name=".ChildDashboard"></activity>
+        <activity android:name=".CalendarShow"></activity>
+        <activity android:name=".AddNewAssignment" />
+        <activity android:name=".ChildProfile" />
+        <activity android:name=".ChildDashboard" />
         <activity android:name=".ParentDashboard" />
         <activity android:name=".ChildrenList" />
         <activity android:name=".CreateHousehold" />

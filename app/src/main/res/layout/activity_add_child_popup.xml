@@ -10,23 +10,6 @@
     tools:context=".AddChildPopup">
 
     <Button
-        android:id="@+id/deleteSubject"
-        android:layout_width="252dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="58dp"
-        android:text="Delete"
-        app:backgroundTint="#DA3A45"
-        app:cornerRadius="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/confirmSubject"
         android:layout_width="252dp"
         android:layout_height="48dp"
@@ -34,11 +17,12 @@
         android:layout_marginLeft="45dp"
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="114dp"
         android:text="Add"
+        android:onClick="addSubject"
         app:backgroundTint="#47A773"
         app:cornerRadius="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/deleteSubject"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent" />
@@ -53,8 +37,8 @@
         android:layout_marginRight="36dp"
         android:layout_marginBottom="80dp"
         android:ems="10"
+        android:hint="Algebra I"
         android:inputType="textPersonName"
-        android:text="Algebra I"
         app:layout_constraintBottom_toTopOf="@+id/confirmSubject"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
