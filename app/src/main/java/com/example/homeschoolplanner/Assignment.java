@@ -3,7 +3,7 @@ package com.example.homeschoolplanner;
 import java.util.Date;
 
 public class Assignment {
-    Date due_date;
+    String due_date;
     String description;
     String title;
     String class_name;
@@ -13,7 +13,7 @@ public class Assignment {
 
     Assignment() {}
 
-    Assignment(Date due_date, String description, String title, String class_name, boolean marked_complete, boolean confirmed_complete, String owner) {
+    Assignment(String due_date, String description, String title, String class_name, boolean marked_complete, boolean confirmed_complete, String owner) {
         this.due_date = due_date;
         this.description = description;
         this.title = title;
@@ -23,11 +23,11 @@ public class Assignment {
         this.owner = owner;
     }
 
-    public Date getDue_date() {
+    public String getDue_date() {
         return due_date;
     }
 
-    public void setDue_date(Date due_date) {
+    public void setDue_date(String due_date) {
         this.due_date = due_date;
     }
 

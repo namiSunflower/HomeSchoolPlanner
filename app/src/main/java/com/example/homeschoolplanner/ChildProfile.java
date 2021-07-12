@@ -34,7 +34,11 @@ public class ChildProfile extends AppCompatActivity {
         childProfileName.setText("Hello! " +  selectedChild);
     }
     public void addNewAssignment(View v){
+        Intent idIntent = getIntent();
+        String userId = idIntent.getStringExtra("userId");
+
         Intent assignmentScreen = new Intent(ChildProfile.this, AddNewAssignment.class);
+        assignmentScreen.putExtra("userId", userId);
         startActivity(assignmentScreen);
     }
 }

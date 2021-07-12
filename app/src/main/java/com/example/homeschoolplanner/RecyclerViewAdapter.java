@@ -69,7 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @Override
         public void onClick(View v) {
-            listener.onClick(v, getAbsoluteAdapterPosition());
+            //listener.onClick(v, getAbsoluteAdapterPosition());
         }
     }
 }

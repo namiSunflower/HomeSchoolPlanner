@@ -108,4 +108,10 @@ public class ParentDashboard extends AppCompatActivity{
         intent.putExtra("userId", userId);
         startActivity(intent);
     }
+
+    public void addAssignmentScreen(View view){
+        Intent intent = new Intent(ParentDashboard.this, AddNewAssignment.class);
+        intent.putExtra("userId", userId);
+        startActivity(intent);
+    }
 }

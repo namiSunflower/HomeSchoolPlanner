@@ -40,6 +40,11 @@ public class User implements Serializable {
         this.name = null;
     }
 
+    User(String userId) {
+        this.userId = userId;
+        loadUserDataFromServer();
+    }
+
     User(String userId, boolean is_parent, String password, String email, String name) {
         this.userId = userId;
         this.is_parent = is_parent;
@@ -96,7 +101,6 @@ public class User implements Serializable {
         firebaseDatabase.getReference().child(this.userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userId = (String) snapshot.child("userId").getValue();
                 email = (String) snapshot.child("email").getValue();
                 is_parent = (boolean) snapshot.child("is_parent").getValue();
                 password = (String) snapshot.child("password").getValue();
