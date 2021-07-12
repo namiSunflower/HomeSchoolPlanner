@@ -57,7 +57,7 @@ public class SignUpScreen extends AppCompatActivity {
             return;
         }
         if(password.length()<6) {
-            editTextPassword.setError("Min Password Length is should be 6 Characters!");
+            editTextPassword.setError("Min Password Length should be 6 Characters!");
             editTextPassword.requestFocus();
             return;
         }
