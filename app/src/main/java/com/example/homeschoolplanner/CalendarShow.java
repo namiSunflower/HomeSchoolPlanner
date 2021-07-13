@@ -16,8 +16,10 @@ public class CalendarShow extends AppCompatActivity {
         //Takes userId from ChildProfile class
         Intent idIntent = getIntent();
         String userId = idIntent.getStringExtra("userId");
+        String parentId = idIntent.getStringExtra("parentId");
         intent = new Intent(CalendarShow.this, AddNewAssignment.class);
-        intent.putExtra("userId", userId);
+        intent.putExtra("childId", userId);
+        intent.putExtra("parentId", parentId);
 
         setContentView(R.layout.activity_calendar_show);
         calendarView = (CalendarView)findViewById(R.id.calendarView);

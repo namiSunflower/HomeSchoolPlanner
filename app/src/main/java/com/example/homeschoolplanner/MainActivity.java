@@ -51,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     userId= task.getResult().getUser().getUid();
                     FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
-                    firebaseDatabase.getReference().child(userId).child("is_parent").addListenerForSingleValueEvent(new ValueEventListener() {
+                    firebaseDatabase.getReference().child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            userType = snapshot.getValue(Boolean.class);
+                            userType = snapshot.child("is_parent").getValue(Boolean.class);
+
                             //if usertype is parent, take user to parent dashboard
                             if(userType==true){
                                 Intent parentDashboard = new Intent(MainActivity.this, ParentDashboard.class);
@@ -63,8 +64,11 @@ public class MainActivity extends AppCompatActivity {
                             }
                             //if usertype is child, take user to child dashboard
                             if(userType==false){
+                                String userName = (String) snapshot.child("name").getValue();
+
                                 Intent childDashboard = new Intent(MainActivity.this, ChildProfile.class);
-                                childDashboard.putExtra("userId", userId);
+                                childDashboard.putExtra("childId", userId);
+                                childDashboard.putExtra("childName", userName);
                                 startActivity(childDashboard);
                             }
                         }

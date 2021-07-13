@@ -20,7 +20,7 @@ public class AddNewAssignment extends AppCompatActivity {
     private EditText date;
     private User user;
     String stringDate;
-    String selected_child_id;
+    String parentId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +31,14 @@ public class AddNewAssignment extends AppCompatActivity {
         //takes intent info from calendarshow class
         Intent intent = getIntent();
         stringDate = intent.getStringExtra("date");
-        if (stringDate == null) {
-            String stringDate = "16-07-2021";
-        }
+
+        stringDate = (stringDate == null) ? "16-07-2021" : stringDate;
+
         date.setText(stringDate);
 
-        String userId = intent.getStringExtra("userId");
+        String userId = intent.getStringExtra("childId");
         user = (userId != null) ? new User(userId) : new User();
+        parentId = intent.getStringExtra("parentId");
 
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +46,7 @@ public class AddNewAssignment extends AppCompatActivity {
                 Intent intent = new Intent(AddNewAssignment.this, CalendarShow.class);
                 //user id is passed to CalendarShow class
                 intent.putExtra("userId", userId);
+                intent.putExtra("parentId", parentId);
                 startActivity(intent);
             }
         });
@@ -59,29 +61,28 @@ public class AddNewAssignment extends AppCompatActivity {
         String description = e_description.getText().toString();
         String title = e_title.getText().toString();
         String class_name = e_class_name.getText().toString();
-        String owner = (user.is_parent) ? selected_child_id : user.userId;
+
 
         if (dueDate != null && description != null && title != null && class_name!= null ) {
-            if (owner != null) {
-                Assignment new_assignment = new Assignment(dueDate, description, title, class_name, false, false, owner);
+
+                Assignment new_assignment = new Assignment(dueDate, description, title, class_name, false, false, user.userId);
 
                 user.addAssignment(new_assignment);
                 user.saveAssignments();
 
-                if(user.is_parent == true){
+                if(parentId != null){
                     Intent parentDashboard = new Intent(AddNewAssignment.this, ParentDashboard.class);
-                    parentDashboard.putExtra("userId", user.userId);
+                    parentDashboard.putExtra("userId", parentId);
                     startActivity(parentDashboard);
                 }
                 //if usertype is child, take user to child dashboard
-                if(user.is_parent == false){
+                if(parentId == null){
                     Intent childDashboard = new Intent(AddNewAssignment.this, ChildProfile.class);
-                    childDashboard.putExtra("userId", user.userId);
+                    childDashboard.putExtra("childId", user.userId);
+                    childDashboard.putExtra("childName", user.name);
                     startActivity(childDashboard);
                 }
-            } else {
-                Toast.makeText(this, "Error: This screen was not sent userId as an extra", Toast.LENGTH_LONG);
-            }
+
         } else {
             Toast.makeText(this, "Please Fill out all data", Toast.LENGTH_SHORT);
         }
