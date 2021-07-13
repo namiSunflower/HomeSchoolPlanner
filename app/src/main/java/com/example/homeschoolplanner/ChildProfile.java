@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class ChildProfile extends AppCompatActivity {
     private TextView childProfileName;
+    private String parentUserId, userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,9 @@ public class ChildProfile extends AppCompatActivity {
         String selectedChild = "Child name not set";
         Bundle extras = getIntent().getExtras();
         Intent intent = getIntent();
-        String userId = intent.getStringExtra("userId");
+        String userId = intent.getStringExtra("childId");
+        String parentId = intent.getStringExtra("parentId");
+        Log.d("chicken", "go " + userId);
 
         if (extras != null){
             selectedChild = extras.getString("childName");
@@ -34,9 +37,6 @@ public class ChildProfile extends AppCompatActivity {
         childProfileName.setText("Hello! " +  selectedChild);
     }
     public void addNewAssignment(View v){
-        Intent idIntent = getIntent();
-        String userId = idIntent.getStringExtra("userId");
-
         Intent assignmentScreen = new Intent(ChildProfile.this, AddNewAssignment.class);
         assignmentScreen.putExtra("userId", userId);
         startActivity(assignmentScreen);

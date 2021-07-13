@@ -28,7 +28,7 @@ public class AddNewAssignment extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_assignment);
         calendar = (ImageView)findViewById(R.id.calendar);
         date = (EditText)findViewById(R.id.date);
-
+        //takes intent info from calendarshow class
         Intent intent = getIntent();
         stringDate = intent.getStringExtra("date");
         if (stringDate == null) {
@@ -39,11 +39,11 @@ public class AddNewAssignment extends AppCompatActivity {
         String userId = intent.getStringExtra("userId");
         user = (userId != null) ? new User(userId) : new User();
 
-
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddNewAssignment.this, CalendarShow.class);
+                //user id is passed to CalendarShow class
                 intent.putExtra("userId", userId);
                 startActivity(intent);
             }

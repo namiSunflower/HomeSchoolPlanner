@@ -13,7 +13,7 @@ public class CalendarShow extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //Takes userId from ChildProfile class
         Intent idIntent = getIntent();
         String userId = idIntent.getStringExtra("userId");
         intent = new Intent(CalendarShow.this, AddNewAssignment.class);
@@ -21,9 +21,11 @@ public class CalendarShow extends AppCompatActivity {
 
         setContentView(R.layout.activity_calendar_show);
         calendarView = (CalendarView)findViewById(R.id.calendarView);
+        //shows calendarview screen
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                //might edit date format later
                 String fullDate = dayOfMonth + "-" + month + "-" + year;
                 intent.putExtra("date", fullDate);
                 startActivity(intent);

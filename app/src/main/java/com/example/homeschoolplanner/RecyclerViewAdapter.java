@@ -10,23 +10,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 import java.util.List;
-
+//adapter for parent dashboard recyclerview
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.UsersAdapterVh> {
     private List<ChildModel> childModelList;
     private Context context;
     private SelectedChild listener;
 
-
+//adapter takes child info list & selected child info if clicked
     public RecyclerViewAdapter(List<ChildModel> childModelList, SelectedChild listener) {
         this.childModelList = childModelList;
         this.listener = listener;
     }
 
+//uses row_users.xml to setup how the items will show up on screen
     @NonNull
     @Override
     public RecyclerViewAdapter.UsersAdapterVh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,6 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return new UsersAdapterVh(LayoutInflater.from(context).inflate(R.layout.row_users, null));
     }
 
+//gets child names and initial letter to show up correctly using row_uses.xml layout
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.UsersAdapterVh holder, int position) {
         ChildModel childModel = childModelList.get(position);
@@ -44,17 +42,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.childName.setText(childN);
         holder.childInitial.setText(childI);
     }
-
+//onclick for selected child
     public interface SelectedChild{
         void onClick(View v, int position);
     }
-
+//returns updated array size of children node under parent's account
     @Override
     public int getItemCount() {
         return childModelList.size();
     }
-
-
+//main constructor for the adapter
     public class UsersAdapterVh extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView childInitial;
         TextView childName;
@@ -66,10 +63,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             ivIcon = itemView.findViewById(R.id.ivIcon);
             itemView.setOnClickListener(this);
         }
-
+//gets current details of current selected user
         @Override
         public void onClick(View v) {
-            //listener.onClick(v, getAbsoluteAdapterPosition());
+            listener.onClick(v, getAbsoluteAdapterPosition());
         }
     }
 }

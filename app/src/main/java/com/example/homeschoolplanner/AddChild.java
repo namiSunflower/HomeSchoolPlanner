@@ -175,11 +175,6 @@ public class AddChild extends AppCompatActivity {
      alertDialog.show();
     }
 
-    //When user clicks view subjects button
-    public void viewSubjects(View v) {
-        Intent subjectList = new Intent(AddChild.this, SubjectsList.class);
-        startActivity(subjectList);
-    }
 }
 
 

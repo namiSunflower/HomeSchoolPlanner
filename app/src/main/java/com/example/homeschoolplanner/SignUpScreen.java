@@ -31,6 +31,7 @@ public class SignUpScreen extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
 
     }
+    //Form validation
     public void signUp(View view){
         email = editTextEmail.getText().toString();
         password= editTextPassword.getText().toString();
@@ -61,7 +62,7 @@ public class SignUpScreen extends AppCompatActivity {
             editTextPassword.requestFocus();
             return;
         }
-
+        //Creates new user account in firebase
         FirebaseAuth authenticateSignup = FirebaseAuth.getInstance();
         authenticateSignup.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
