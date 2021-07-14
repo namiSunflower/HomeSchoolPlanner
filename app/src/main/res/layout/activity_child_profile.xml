@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D8D4F2"
     tools:context=".ChildProfile">
 
     <TextView
@@ -17,20 +18,22 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.247" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
-        android:layout_width="393dp"
-        android:layout_height="419dp"
+        android:layout_width="394dp"
+        android:layout_height="257dp"
         android:layout_marginStart="3dp"
         android:layout_marginLeft="3dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/childProfileName" />
 
@@ -40,8 +43,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
-        android:text="Add New Assignment"
         android:onClick="addNewAssignment"
+        android:text="Add New Assignment"
+        app:backgroundTint="#5B6FB4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView2"
@@ -55,9 +59,33 @@
         android:layout_marginLeft="150dp"
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
+        android:background="#5B6FB4"
         android:text="Requests"
+        app:backgroundTint="#47A773"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addAssignment" />
+
+    <ImageView
+        android:id="@+id/bottom_eliptical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/bottom_eliptical" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginLeft="155dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginRight="156dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/student" />
 </androidx.constraintlayout.widget.ConstraintLayout>

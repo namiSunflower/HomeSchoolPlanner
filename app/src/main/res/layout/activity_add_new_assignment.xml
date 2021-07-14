@@ -164,6 +164,7 @@
         android:layout_marginBottom="60dp"
         android:onClick="addAssignment"
         android:text="Submit"
+        app:backgroundTint="#5B6FB4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

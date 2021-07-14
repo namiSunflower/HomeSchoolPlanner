@@ -34,14 +34,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:background="@color/white"
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginLeft="3dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="3dp"
+            android:background="#D8D4F2" />
 
     </LinearLayout>
 
@@ -52,6 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="addChildScreen"
-        android:text="Add children" />
+        android:text="Add children"
+        app:backgroundTint="#5B6FB4"
+        app:iconTint="#5B6FB4" />
 
 </LinearLayout>
