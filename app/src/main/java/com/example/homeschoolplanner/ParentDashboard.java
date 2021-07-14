@@ -97,6 +97,7 @@ public class ParentDashboard extends AppCompatActivity{
                              //data as before and keep adding the same children on top of the new ones
                              cList.clear();
                         }
+
                         //this will get selected child's name and id when user clicks on them
                         private void setOnClickListener() {
                              listener = new RecyclerViewAdapter.SelectedChild() {
@@ -125,6 +126,8 @@ public class ParentDashboard extends AppCompatActivity{
 
             }
         });
+
+
     }
     //when user clicks add children button
     public void addChildScreen(View view){

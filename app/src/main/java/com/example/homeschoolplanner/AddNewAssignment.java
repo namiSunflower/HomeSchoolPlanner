@@ -31,9 +31,7 @@ public class AddNewAssignment extends AppCompatActivity {
         //takes intent info from calendarshow class
         Intent intent = getIntent();
         stringDate = intent.getStringExtra("date");
-
         stringDate = (stringDate == null) ? "16-07-2021" : stringDate;
-
         date.setText(stringDate);
 
         String userId = intent.getStringExtra("childId");

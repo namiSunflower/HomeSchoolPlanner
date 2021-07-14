@@ -13,9 +13,6 @@
         <activity android:name=".AddNewAssignment" />
         <activity android:name=".ChildProfile" />
         <activity android:name=".ParentDashboard" />
-        <activity android:name=".ChildrenList" />
-        <activity android:name=".CreateHousehold" />
-        <activity android:name=".AddChild" />
         <activity android:name=".SignUpScreen" />
         <activity android:name=".MainActivity">
             <intent-filter>

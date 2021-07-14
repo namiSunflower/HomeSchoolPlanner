@@ -28,7 +28,7 @@ public class CalendarShow extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 //might edit date format later
-                String fullDate = dayOfMonth + "-" + month + "-" + year;
+                String fullDate = dayOfMonth + "/" + month + "/" + year;
                 intent.putExtra("date", fullDate);
                 startActivity(intent);
             }

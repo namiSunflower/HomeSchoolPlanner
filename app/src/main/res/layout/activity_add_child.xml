@@ -84,7 +84,7 @@
         android:layout_marginLeft="64dp"
         android:layout_marginEnd="39dp"
         android:layout_marginRight="39dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="112dp"
         android:onClick="newChild"
         android:text="Submit"
         app:backgroundTint="#47A773"
@@ -115,24 +115,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/allSubjects"
-        android:layout_width="308dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:onClick="viewSubjects"
-        android:text="View subjects"
-        app:backgroundTint="#5B6FB4"
-        app:cornerRadius="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addSubject" />
-
     <EditText
         android:id="@+id/childsName"
         android:layout_width="189dp"
@@ -148,45 +130,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/usernameSignupText2" />
-
-    <TextView
-        android:id="@+id/usernameSignupText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="283dp"
-        android:layout_marginRight="283dp"
-        android:onClick="viewSubjects"
-        android:shadowColor="#1C422E"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
-        android:text="Subjects:"
-        android:textColor="#47A773"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/childPasswordText" />
-
-    <Button
-        android:id="@+id/addSubject"
-        android:layout_width="308dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:text="Add a subject"
-        app:backgroundTint="#5B6FB4"
-        app:cornerRadius="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameSignupText3" />
 
     <TextView
         android:id="@+id/usernameSignupText2"

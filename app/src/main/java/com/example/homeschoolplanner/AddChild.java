@@ -39,21 +39,13 @@ public class AddChild extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_child);
-        exit = (ImageView) findViewById(R.id.exit);
         editTextEmail = (EditText) findViewById(R.id.childUsername);
         editTextPassword = (EditText) findViewById(R.id.childPassword);
         editTextName = (EditText) findViewById(R.id.childsName);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        addSubject = (Button)findViewById(R.id.addSubject);
         Intent intent = getIntent();
         parentUserId = (parentUserId != null) ? parentUserId : intent.getStringExtra("userId");
 
-        addSubject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopup();
-            }
-        });
     }
 
     //When user clicks submit
@@ -154,26 +146,6 @@ public class AddChild extends AppCompatActivity {
         });
     }
 
-    public void showPopup(){
-     //Calls Android Studio built-in AlertDialog class to create a popup
-     AlertDialog.Builder popup = new AlertDialog.Builder(this);
-     //This will set the view for the popup screen
-     LayoutInflater inflater = this.getLayoutInflater();
-     final View viewLayout = inflater.inflate(R.layout.activity_add_child_popup, null);
-     popup.setView(viewLayout);
-     //Instantiates variables for the popup screen
-     ImageView exit = (ImageView)viewLayout.findViewById(R.id.exit);
-     EditText editTextSubject = (EditText)viewLayout.findViewById(R.id.subject);
-     final AlertDialog alertDialog = popup.create();
-     //Functionality for creating subject list after user clicks
-     exit.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-             alertDialog.dismiss();
-         }
-     });
-     alertDialog.show();
-    }
 
 }
 

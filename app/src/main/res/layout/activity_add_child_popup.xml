@@ -6,8 +6,7 @@
     android:layout_height="450dp"
     android:layout_gravity="center"
     android:background="#C4B2BC"
-    android:padding="5dp"
-    tools:context=".AddChildPopup">
+    android:padding="5dp">
 
     <Button
         android:id="@+id/confirmSubject"
@@ -63,23 +62,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="322dp"
-        android:layout_marginLeft="322dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="415dp"
-        android:visibility="visible"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_close_24"
-        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
