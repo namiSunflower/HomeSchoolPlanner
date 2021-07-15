@@ -114,9 +114,9 @@ public class User implements Serializable {
                 ArrayList<HashMap<String, String>> hashAssignments = (ArrayList<HashMap<String, String>>) snapshot.child("assignments").getValue();
                 //The server gives us the data as a hash map. This converts each assignment hashmap into an assignment class.
                 assignments = new ArrayList<Assignment>();
+                hashAssignments = (hashAssignments == null) ? new ArrayList<HashMap<String, String>>() : hashAssignments;
+
                 for (HashMap<String, String> hash : hashAssignments) {
-
-
 
                     String due_date = (hash.containsKey("due_date")) ? hash.get("due_date") : null;
                     String description = (hash.containsKey("description")) ? hash.get("description") : null;
