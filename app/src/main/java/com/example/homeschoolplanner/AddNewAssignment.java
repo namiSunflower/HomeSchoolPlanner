@@ -31,7 +31,6 @@ public class AddNewAssignment extends AppCompatActivity {
         //takes intent info from calendarshow class
         Intent intent = getIntent();
         stringDate = intent.getStringExtra("date");
-        stringDate = (stringDate == null) ? "16-07-2021" : stringDate;
         date.setText(stringDate);
 
         String userId = intent.getStringExtra("childId");
@@ -55,15 +54,19 @@ public class AddNewAssignment extends AppCompatActivity {
         EditText e_title = (EditText)findViewById(R.id.assignmentName);
         EditText e_class_name = (EditText)findViewById(R.id.subjectName);
 
+
         String dueDate = stringDate;
         String description = e_description.getText().toString();
         String title = e_title.getText().toString();
         String class_name = e_class_name.getText().toString();
 
+        //WOULD SOMEONE ADD A CHECKBOX OR SOMETHING SO THE USER CAN SPECIFY WHETHER THE ASSIGNMENT SHOULD REPEAT OR NOT?
+        boolean repeating = true;
+
 
         if (dueDate != null && description != null && title != null && class_name!= null ) {
 
-                Assignment new_assignment = new Assignment(dueDate, description, title, class_name, false, false, user.userId);
+                Assignment new_assignment = new Assignment(dueDate, description, title, class_name, false, false, repeating,  user.userId);
 
                 user.addAssignment(new_assignment);
                 user.saveAssignments();

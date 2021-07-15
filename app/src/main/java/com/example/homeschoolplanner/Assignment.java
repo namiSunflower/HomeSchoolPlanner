@@ -9,17 +9,19 @@ public class Assignment {
     String class_name;
     boolean marked_complete;
     boolean confirmed_complete;
+    boolean repeating;
     String owner;
 
     Assignment() {}
 
-    Assignment(String due_date, String description, String title, String class_name, boolean marked_complete, boolean confirmed_complete, String owner) {
+    Assignment(String due_date, String description, String title, String class_name, boolean marked_complete, boolean confirmed_complete, boolean repeating, String owner) {
         this.due_date = due_date;
         this.description = description;
         this.title = title;
         this.class_name = class_name;
         this.marked_complete = marked_complete;
         this.confirmed_complete = confirmed_complete;
+        this.repeating = repeating;
         this.owner = owner;
     }
 
@@ -78,6 +80,12 @@ public class Assignment {
     public void setOwner(String owner) {
         this.owner = owner;
     }
+
+    public boolean isRepeating() { return repeating; }
+
+    public void setRepeating(boolean repeating) { this.repeating = repeating; }
+
+
 
 
 

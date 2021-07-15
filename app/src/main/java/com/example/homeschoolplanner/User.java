@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicMarkableReference;
 
@@ -106,9 +107,36 @@ public class User implements Serializable {
                 password = (String) snapshot.child("password").getValue();
                 name = (String) snapshot.child("name").getValue();
                 children = (List<String>) snapshot.child("children").getValue();
-                assignments = (ArrayList<Assignment>) snapshot.child("assignments").getValue();
+                ArrayList<HashMap<String, String>> hashAssignments = (ArrayList<HashMap<String, String>>) snapshot.child("assignments").getValue();
+                //The server gives us the data as a hash map. This converts each assignment hashmap into an assignment class.
+                assignments = new ArrayList<Assignment>();
+                for (HashMap<String, String> hash : hashAssignments) {
 
 
+
+                    String due_date = (hash.containsKey("due_date")) ? hash.get("due_date") : null;
+                    String description = (hash.containsKey("description")) ? hash.get("description") : null;
+                    String title = (hash.containsKey("title")) ? hash.get("title") : null;
+                    String class_name = (hash.containsKey("class_name")) ? hash.get("class_name") : null;
+                    Object marked_complete = false;
+                    Object confirmed_complete = false;
+                    Object repeating = false;
+                    if (hash.containsKey("marked_complete")) {
+                        marked_complete = hash.get("marked_complete");
+                    }
+                    if (hash.containsKey("confirmed_complete")) {
+                        confirmed_complete = hash.get("confirmed_complete");
+                    }
+                    if (hash.containsKey("repeating")) {
+                        repeating = hash.get("repeating");
+                    }
+                    String owner = (hash.containsKey("owner")) ? hash.get("owner") : null;
+
+                    Assignment new_assignment = new Assignment(due_date, description, title, class_name, (Boolean) marked_complete, (Boolean) confirmed_complete, (Boolean) repeating, owner);
+
+
+                    assignments.add(new_assignment);
+                }
             }
 
             @Override
@@ -119,6 +147,13 @@ public class User implements Serializable {
         });
     }
 
+    public void markAssignmentComplete(int index, boolean is_parent) {
+        Assignment temp = this.assignments.get(index);
+        temp.setMarked_complete(true);
+        temp.setConfirmed_complete(is_parent);
+        this.assignments.set(index, temp);
+        saveAssignments();
+    }
 
     public void saveAssignments() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
