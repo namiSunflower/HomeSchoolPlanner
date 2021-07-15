@@ -21,16 +21,19 @@ public class CalendarShow extends AppCompatActivity {
         String description = idIntent.getStringExtra("description");
         String title = idIntent.getStringExtra("title");
         String class_name = idIntent.getStringExtra("class_name");
+        int assignmentIndex = idIntent.getIntExtra("assignmentIndex", 0);
         boolean repeating = idIntent.getBooleanExtra("repeating", false);
+        boolean cameFromEditAssignment = idIntent.getBooleanExtra("cameFromEditAssignment", false);
 
 
-        intent = new Intent(CalendarShow.this, AddNewAssignment.class);
+        intent = (cameFromEditAssignment) ? new Intent(CalendarShow.this, EditAssignment.class) : new Intent(CalendarShow.this, AddNewAssignment.class);
         intent.putExtra("childId", userId);
         intent.putExtra("parentId", parentId);
         intent.putExtra("description", description);
         intent.putExtra("title", title);
         intent.putExtra("class_name", class_name);
         intent.putExtra("repeating", repeating);
+        intent.putExtra("assignmentIndex", assignmentIndex);
 
         setContentView(R.layout.activity_calendar_show);
         calendarView = (CalendarView) findViewById(R.id.calendarView);

@@ -12,6 +12,7 @@
         <activity android:name=".AddChild"></activity>
         <activity android:name=".CalendarShow"></activity>
         <activity android:name=".AddNewAssignment" />
+        <activity android:name=".EditAssignment" />
         <activity android:name=".ChildProfile" />
         <activity android:name=".ParentDashboard" />
         <activity android:name=".SignUpScreen" />
