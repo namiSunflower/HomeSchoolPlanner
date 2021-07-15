@@ -85,6 +85,9 @@ public class Assignment {
 
     public void setRepeating(boolean repeating) { this.repeating = repeating; }
 
+    public Assignment clone() {
+        return new Assignment( this.due_date, this.description, this.title, this.class_name, this.marked_complete, this.confirmed_complete, this.repeating, this.owner);
+    }
 
 
 

@@ -132,7 +132,7 @@ public class ParentDashboard extends AppCompatActivity{
     //when user clicks add children button
     public void addChildScreen(View view){
         Intent intent = new Intent(ParentDashboard.this, AddChild.class);
-        intent.putExtra("userId", userId);
+        intent.putExtra("userId", this.userId);
         startActivity(intent);
     }
 }

@@ -1,10 +1,12 @@
 package com.example.homeschoolplanner;
 
 import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -16,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -147,11 +151,27 @@ public class User implements Serializable {
         });
     }
 
+
     public void markAssignmentComplete(int index, boolean is_parent) {
         Assignment temp = this.assignments.get(index);
         temp.setMarked_complete(true);
         temp.setConfirmed_complete(is_parent);
         this.assignments.set(index, temp);
+        if (is_parent && temp.isRepeating()) {
+            String newDueDate = "31/12/2022";
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                DateTimeFormatter datePattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate now = LocalDate.now();
+                LocalDate next_week = now.minusDays(-7);
+                newDueDate = datePattern.format(next_week);
+            }
+
+            Assignment new_assignment = temp.clone();
+            new_assignment.setMarked_complete(false);
+            new_assignment.setConfirmed_complete(false);
+            new_assignment.setDue_date(newDueDate);
+            this.assignments.add(new_assignment);
+        }
         saveAssignments();
     }
 
