@@ -156,7 +156,11 @@ public class User implements Serializable {
         Assignment temp = this.assignments.get(index);
         temp.setMarked_complete(true);
         temp.setConfirmed_complete(is_parent);
-        this.assignments.set(index, temp);
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+
+        if (is_parent) {
+            this.assignments.remove(index);
+        }
         if (is_parent && temp.isRepeating()) {
             String newDueDate = "31/12/2022";
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
