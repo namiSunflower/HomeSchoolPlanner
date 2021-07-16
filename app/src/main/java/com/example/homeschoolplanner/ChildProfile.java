@@ -57,7 +57,8 @@ public class ChildProfile extends AppCompatActivity implements ChildProfileInter
         populateList();
         tasks.setLayoutManager(new LinearLayoutManager(this));
         user = new User(userId);
-        hwkAdapter = new HomeworkAdapter(user, parentId, assignments, this);
+        Intent editTransferIntent =  new Intent(ChildProfile.this, EditAssignment.class);
+        hwkAdapter = new HomeworkAdapter(user, parentId, editTransferIntent, assignments, this);
         tasks.setAdapter(hwkAdapter);
 
         childProfileName.setText("Hello! " +  selectedChild);
@@ -126,10 +127,7 @@ public class ChildProfile extends AppCompatActivity implements ChildProfileInter
         startActivity(assignmentScreen);
     }
 
-    @Override
-    public void onItemClick(int position) {
-        Toast.makeText(this, "hi " + assignments.get(position), Toast.LENGTH_SHORT).show();
-    }
+
 
     @Override
     public void onLongItemClick(int position) {

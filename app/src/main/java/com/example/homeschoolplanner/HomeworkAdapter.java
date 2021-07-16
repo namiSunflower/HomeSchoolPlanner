@@ -2,6 +2,7 @@
 package com.example.homeschoolplanner;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,12 +23,14 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.Homewo
     private User user;
     private String parentId;
     private ChildProfileInterface childProfileInterface;
+    Intent intent;
 
-    public HomeworkAdapter(User user, String parentId, ArrayList<Assignment> assignments, ChildProfileInterface childProfileInterface) {
+    public HomeworkAdapter(User user, String parentId, Intent intent, ArrayList<Assignment> assignments, ChildProfileInterface childProfileInterface) {
         this.user = user;
         this.parentId = parentId;
         this.assignments = assignments;
         this.childProfileInterface = childProfileInterface;
+        this.intent = intent;
     }
 
     @NonNull
@@ -73,7 +76,15 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.Homewo
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                childProfileInterface.onItemClick(getLayoutPosition());
+
+                    intent.putExtra("childId", user.userId);
+                    intent.putExtra("parentId", parentId);
+                    intent.putExtra("description", user.assignments.get(index).description);
+                    intent.putExtra("title", user.assignments.get(index).title);
+                    intent.putExtra("class_name", user.assignments.get(index).class_name);
+                    intent.putExtra("repeating", user.assignments.get(index).repeating);
+                    intent.putExtra("assignmentIndex", index);
+                    context.startActivity(intent);
                 }
             });
 
