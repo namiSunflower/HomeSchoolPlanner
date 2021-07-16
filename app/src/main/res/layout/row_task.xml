@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbarSize="15sp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="325dp"
+        android:layout_height="86dp"
+        app:cardBackgroundColor="#4245"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/hwk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="16dp"
+            android:text="Trigonometric Identities Test"
+            android:textColor="#009688"
+            android:textSize="17sp" />
+
+
+        <TextView
+            android:id="@+id/hwkDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="60dp"
+            android:text="26/07/2021"
+            android:textColorLink="#FFC107"
+            android:textSize="14sp" />
+
+        <CheckBox
+            android:id="@+id/checkHwk"
+            android:layout_width="25dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="25dp" />
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
