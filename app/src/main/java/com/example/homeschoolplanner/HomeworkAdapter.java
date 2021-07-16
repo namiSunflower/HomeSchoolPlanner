@@ -5,19 +5,17 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.HomeworkVh> {
     private ArrayList<Assignment> assignments;
+    private ArrayList<User> users;
     private Context context;
     private RecyclerView recyclerView;
     private HomeworkAdapter hwkAdapter;
@@ -25,7 +23,9 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.Homewo
     private String parentId;
     private ChildProfileInterface childProfileInterface;
 
-    public HomeworkAdapter(ArrayList<Assignment> assignments, ChildProfileInterface childProfileInterface) {
+    public HomeworkAdapter(User user, String parentId, ArrayList<Assignment> assignments, ChildProfileInterface childProfileInterface) {
+        this.user = user;
+        this.parentId = parentId;
         this.assignments = assignments;
         this.childProfileInterface = childProfileInterface;
     }
@@ -51,6 +51,7 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.Homewo
 
         holder.hwk.setText(className);
         holder.hwkDate.setText(dueDate);
+        holder.index = position;
     }
 
     @Override
@@ -60,12 +61,14 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.Homewo
 
     public class HomeworkVh extends RecyclerView.ViewHolder {
         TextView hwk, hwkDate;
-        CheckBox checkHwk;
+        Button completeAssignment;
+        public int index;
         public HomeworkVh(@NonNull View itemView) {
             super(itemView);
             hwk = itemView.findViewById(R.id.hwk);
             hwkDate = itemView.findViewById(R.id.hwkDate);
-            checkHwk = itemView.findViewById(R.id.checkHwk);
+            completeAssignment = itemView.findViewById(R.id.button2);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -79,6 +82,14 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.Homewo
                 public boolean onLongClick(View v) {
                     childProfileInterface.onLongItemClick(getAbsoluteAdapterPosition());
                     return true;
+                }
+            });
+
+            completeAssignment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean is_parent = (parentId != null);
+                    user.markAssignmentComplete(index, is_parent);
                 }
             });
         }

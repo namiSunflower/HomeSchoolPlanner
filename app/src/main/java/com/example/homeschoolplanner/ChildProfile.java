@@ -57,7 +57,7 @@ public class ChildProfile extends AppCompatActivity implements ChildProfileInter
         populateList();
         tasks.setLayoutManager(new LinearLayoutManager(this));
         user = new User(userId);
-        hwkAdapter = new HomeworkAdapter(assignments, this);
+        hwkAdapter = new HomeworkAdapter(user, parentId, assignments, this);
         tasks.setAdapter(hwkAdapter);
 
         childProfileName.setText("Hello! " +  selectedChild);
