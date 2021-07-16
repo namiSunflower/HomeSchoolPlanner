@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -69,20 +68,18 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.Homewo
 
     public class HomeworkVh extends RecyclerView.ViewHolder {
         TextView hwk, hwkDate;
-        ImageView completeAssignment, deleteAssignment;
+        ImageView completeAssignment, removeAssignment;
         public int index;
         public HomeworkVh(@NonNull View itemView) {
             super(itemView);
             hwk = itemView.findViewById(R.id.hwk);
             hwkDate = itemView.findViewById(R.id.hwkDate);
             completeAssignment = itemView.findViewById(R.id.done);
-            deleteAssignment = itemView.findViewById(R.id.delete);
-
+            removeAssignment = itemView.findViewById(R.id.delete);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     intent.putExtra("childId", user.userId);
                     intent.putExtra("parentId", parentId);
                     intent.putExtra("description", user.assignments.get(index).description);
@@ -99,19 +96,16 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.Homewo
                 public void onClick(View v) {
                     boolean is_parent = (parentId != null);
                     user.markAssignmentComplete(index, is_parent);
-                    hwkAdapter.notifyDataSetChanged();
                 }
             });
 
-            deleteAssignment.setOnClickListener(new View.OnClickListener() {
+            removeAssignment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (parentId != null) {
-                        user.assignments.remove(index);
-                        user.saveAssignments();
-                        hwkAdapter.notifyDataSetChanged();
+                            user.assignments.remove(index);
+                            user.saveAssignments();
                     }
-
                 }
             });
 

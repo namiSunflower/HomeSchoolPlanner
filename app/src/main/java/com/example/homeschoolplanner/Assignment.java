@@ -89,7 +89,4 @@ public class Assignment {
         return new Assignment( this.due_date, this.description, this.title, this.class_name, this.marked_complete, this.confirmed_complete, this.repeating, this.owner);
     }
 
-
-
-
 }
