@@ -17,14 +17,19 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">>
+            android:layout_height="?attr/actionBarSize"
+            app:titleTextColor="#FAF8F8">>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:shadowColor="#57171B"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
                 android:text="Children"
-                android:textColor="@color/black"
+                android:textColor="#DA3A45"
                 android:textSize="24sp" />
         </androidx.appcompat.widget.Toolbar>
     </LinearLayout>
@@ -36,8 +41,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="411dp"
+            android:layout_height="245dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
             android:layout_marginTop="3dp"
@@ -51,6 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="80dp"
         android:onClick="addChildScreen"
         android:text="Add children"
         app:backgroundTint="#5B6FB4"

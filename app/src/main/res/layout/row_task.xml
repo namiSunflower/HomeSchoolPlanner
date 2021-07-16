@@ -5,16 +5,18 @@
     android:id="@+id/completeAssignment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbarSize="15sp">
+    android:scrollbarSize="15sp"
+    android:layout_gravity="center_horizontal"
+    >
 
     <androidx.cardview.widget.CardView
         android:layout_width="325dp"
         android:layout_height="86dp"
-        app:cardBackgroundColor="#4245"
+        app:cardBackgroundColor="#44F7FBFD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:ignore="MissingConstraints">
 
 
         <TextView
@@ -24,9 +26,14 @@
             android:layout_marginStart="36dp"
             android:layout_marginLeft="36dp"
             android:layout_marginTop="16dp"
-            android:text="Trigonometric Identities Test"
-            android:textColor="#009688"
-            android:textSize="17sp" />
+            android:shadowColor="#287A7B"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:text="Music Recital"
+            android:textColor="#34A0A4"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
 
         <TextView
@@ -39,14 +46,23 @@
             android:textColorLink="#FFC107"
             android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/button2"
+        <ImageView
+            android:id="@+id/done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
-            android:layout_marginTop="36dp"
-            android:text="Complete"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginLeft="210dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/done" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="263dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_delete_24" />
 
 
     </androidx.cardview.widget.CardView>

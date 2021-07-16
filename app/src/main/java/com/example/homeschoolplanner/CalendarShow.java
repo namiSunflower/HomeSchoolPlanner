@@ -7,6 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CalendarView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class CalendarShow extends AppCompatActivity {
     private CalendarView calendarView;
     Intent intent;
@@ -24,7 +29,6 @@ public class CalendarShow extends AppCompatActivity {
         int assignmentIndex = idIntent.getIntExtra("assignmentIndex", 0);
         boolean repeating = idIntent.getBooleanExtra("repeating", false);
         boolean cameFromEditAssignment = idIntent.getBooleanExtra("cameFromEditAssignment", false);
-
 
         intent = (cameFromEditAssignment) ? new Intent(CalendarShow.this, EditAssignment.class) : new Intent(CalendarShow.this, AddNewAssignment.class);
         intent.putExtra("childId", userId);

@@ -52,10 +52,10 @@
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"
-        android:text="Password:"
         android:textColor="#34A0A4"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:text="Password:"
         app:layout_constraintEnd_toStartOf="@+id/passWordSignup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameSignupText" />

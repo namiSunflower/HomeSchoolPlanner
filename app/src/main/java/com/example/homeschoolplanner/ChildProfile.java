@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ChildProfile extends AppCompatActivity implements ChildProfileInterface {
+public class ChildProfile extends AppCompatActivity {
     private TextView childProfileName;
     private String parentId, userId;
     private HomeworkAdapter hwkAdapter;
@@ -58,7 +58,7 @@ public class ChildProfile extends AppCompatActivity implements ChildProfileInter
         tasks.setLayoutManager(new LinearLayoutManager(this));
         user = new User(userId);
         Intent editTransferIntent =  new Intent(ChildProfile.this, EditAssignment.class);
-        hwkAdapter = new HomeworkAdapter(user, parentId, editTransferIntent, assignments, this);
+        hwkAdapter = new HomeworkAdapter(user, parentId, editTransferIntent, assignments);
         tasks.setAdapter(hwkAdapter);
 
         childProfileName.setText("Hello! " +  selectedChild);
@@ -118,20 +118,11 @@ public class ChildProfile extends AppCompatActivity implements ChildProfileInter
             //firebaseDatabase.getReference().child(parentUserId).child("children").setValue(children);
         }
     }
-
-
     public void addNewAssignment(View v){
         Intent assignmentScreen = new Intent(ChildProfile.this, AddNewAssignment.class);
         assignmentScreen.putExtra("childId", userId);
         assignmentScreen.putExtra("parentId", parentId);
         startActivity(assignmentScreen);
-    }
-
-
-
-    @Override
-    public void onLongItemClick(int position) {
-        Toast.makeText(this, "hi", Toast.LENGTH_SHORT).show();
     }
 }
 

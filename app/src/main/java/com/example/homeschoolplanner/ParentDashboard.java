@@ -78,12 +78,6 @@ public class ParentDashboard extends AppCompatActivity{
                                 //ChildModel needs childId and childName as parameters
                                 ChildModel childModel = new ChildModel(childId, n);
                                 childNames.add(childModel);
-                                /**
-                                 * Strictly for testing purposes
-                                  for(int i = 0; i < cList.size(); i++)
-                                {
-                                    Log.d("popeye", cList.get(i));
-                                }*/
                             }
                              setOnClickListener();
                              //android studio needs adapter when showing items in listviews,
@@ -120,14 +114,11 @@ public class ParentDashboard extends AppCompatActivity{
 
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-
-
     }
     //when user clicks add children button
     public void addChildScreen(View view){

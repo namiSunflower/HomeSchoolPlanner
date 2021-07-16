@@ -118,9 +118,9 @@ public class AddNewAssignment extends AppCompatActivity {
                 startActivity(childDashboard);
             }
 
-        } else {
+        }
+        if (dueDate == null || description == null || title == null || class_name == null) {
             Toast.makeText(this, "Please Fill out all data", Toast.LENGTH_SHORT);
         }
-
     }
 }
