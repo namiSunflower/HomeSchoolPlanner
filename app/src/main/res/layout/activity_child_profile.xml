@@ -24,6 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasks"
         android:layout_width="391dp"
@@ -42,6 +43,19 @@
         android:onClick="addNewAssignment"
         android:text="Add New Assignment"
         app:backgroundTint="#5B6FB4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tasks" />
+
+    <Button
+        android:id="@+id/updateTasks"
+        android:layout_width="203dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="96dp"
+        android:onClick="refreshTasks"
+        android:text="Update tasks"
+        app:backgroundTint="#47A773"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,4 +85,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/student" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -107,7 +107,6 @@ public class ChildProfile extends AppCompatActivity {
             }
         });
     }
-
     public void updateDate(){
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             DateTimeFormatter datePattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -118,6 +117,11 @@ public class ChildProfile extends AppCompatActivity {
             //firebaseDatabase.getReference().child(parentUserId).child("children").setValue(children);
         }
     }
+
+    public void refreshTasks(View v){
+        populateList();
+    }
+
     public void addNewAssignment(View v){
         Intent assignmentScreen = new Intent(ChildProfile.this, AddNewAssignment.class);
         assignmentScreen.putExtra("childId", userId);
